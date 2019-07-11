@@ -1,0 +1,63 @@
+\tikzstyle{choice}=[diamond,draw,aspect=3, inner sep=0.1ex, scale=1.0]
+\tikzstyle{node}=[rectangle,draw, align=center, inner sep=1.0ex, rounded corners=4pt, scale=1.0]
+\tikzstyle{nodebox}=[rectangle,draw, align=center, inner sep=1.0ex, scale=1.0]
+\tikzstyle{info}=[align=center, inner sep=1.0ex, scale=1.0]
+\tikzstyle{io}=[info, rounded corners=5pt, fill=gray, text=white]
+\tikzstyle{link}=[->,>=latex,very thick]
+\tikzstyle{box}=[draw, dashed, ultra thick, gray, rounded corners=6pt]
+\tikzstyle{boxName}=[align=right, inner sep=.2ex, scale=1.0,color=blue, right, rotate=-90]
+
+\newcommand{\namedBox}[3]%content, text, color
+%{\node[box, inner sep=20pt, fit=#1, label={[align=left,shift={(-4.0ex,-1.0ex)},rotate={(-90)}, #3]north east:#2}]{};}
+{\node[box, inner sep=10pt, fit=#1, label={[align=right,xshift={(-0.5ex)},io,rotate={(-90)}]north east:#2}]{};}
+
+\newcommand{\thinNamedBox}[3]%content, text, color
+{\node[box, inner sep=5pt, fit=#1, label={[align=right,xshift={(-0.5ex)},io,rotate={(-90)}]north east:#2}]{};}
+
+\newcommand{\namedIdBox}[4]%content, text, color, id
+{\node[box, inner sep=10pt, fit=#1, label={[align=right,xshift={(-0.5ex)},io,rotate={(-90)}]north east:#2}] (#4) {};}
+
+%========================================================Experimental data graphs
+%\usetikzlibrary{decorations.text}
+\newcommand{\sectionElt}[5]{%tin, tout, level, name, color
+	\pgfmathparse{#3 +0.4}\let\z\pgfmathresult;
+%	\draw[fill=#5] (#1:#3) arc (#1:#2:#3) node[midway,sloped,above]{#4} -- (#2:\z) arc (#2:#1:\z) -- cycle;
+	\draw[fill=#5] (#1:#3) arc (#1:#2:#3) -- (#2:\z) arc (#2:#1:\z) -- cycle;
+
+%	\path[decoration = {text along path, text = {#4}, text align = {align = center}, raise = -0.5ex}, decorate] (#1:#3) arc (#1:#2:#3);
+
+%	\pgfmathparse{(#1+#2)/2}\let\x\pgfmathresult;
+%	\draw (\x:\z) -- (\x:9) node{test};
+%	\node[sloped, above,align=center] at (\x:#3) {Test};
+%	\path [decorate,decoration={text along path, text={test}}] (#1:#3) arc (#1:#2:#3);
+	
+%	[postaction={decorate},decoration={text along path,text={#4},text align=center}]
+}
+
+\newcommand{\fctSection}[4]{%tin, tout, level, name, color
+	\pgfmathparse{#3 +0.4}\let\z\pgfmathresult;
+%	\pgfmathparse{#3 +0.3}\let\w\pgfmathresult;
+%	\draw[fill=#5] (#1:#3) arc (#1:#2:#3) node[midway,sloped,above]{#4} -- (#2:\z) arc (#2:#1:\z) -- cycle;
+	\draw[fill=gray!40] (#1:#3) arc (#1:#2:#3) -- (#2:\z) arc (#2:#1:\z) -- cycle;
+	
+%	\path [decorate,decoration={text along path, text={#4}}] (#1:\w) arc (#1:#2:\w);
+	
+%	\pgfmathparse{(#1+#2)/2}\let\w\pgfmathresult;
+%	\draw (\w:\z) -- (\w:8) node{#4};
+%	\node at(\w:8){#4};
+}
+
+%Old
+\newcommand{\gpuSection}[4]{%tin, tout, level, name
+%	\sectionElt{#1}{#2}{#3}{#4}{green!75};
+	\pgfmathparse{#3 +0.4}\let\z\pgfmathresult;
+	\draw[fill=green!75] (#1:#3) arc (#1:#2:#3) node[midway,sloped]{#4} -- (#2:\z) arc (#2:#1:\z) -- cycle;
+}
+
+\newcommand{\sectionIter}[2]%time, level
+{\pgfmathparse{#2 +0.4}\let\z\pgfmathresult;\draw[dashed] (#1:#2) -- (#1:\z);}
+
+\newcommand{\sectionLevel}[1]%level
+{\pgfmathparse{#1 +0.2}\let\z\pgfmathresult;\draw[color=gray] (0:\z) arc (0:330:\z);}
+
+%========================================================
