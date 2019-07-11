@@ -1,0 +1,176 @@
+\documentclass[crop,tikz]{standalone}
+\usetikzlibrary{shapes,arrows,fit,calc,backgrounds}
+
+\begin{document}
+\input{./Diagrams/Patterns/tikz_patterns.tex}
+
+\begin{tikzpicture}
+
+
+\node [above,yshift=,5] (Name) at (0,0) {\textbf{Jetson TX1}};
+\node [below, color=gray] (subName1) at (0,0) {\emph{Improved mapping}};
+\node [below, color=gray] (subName2) at (subName1.south) {\emph{on GPU}};
+
+\foreach \time in {1,2,3,...,8}{
+\pgfmathparse{\time*39.439325}\let\sectTime\pgfmathresult;
+\draw[dashed, color=gray!30] (\sectTime:2) -- (\sectTime:7.5);
+}
+\foreach \time in {1,2,3,...,8}{
+\pgfmathparse{\time*39.439325}\let\sectTime\pgfmathresult;
+\draw[color=gray] (\sectTime:8) node {\time};
+}
+\draw (0:2) -- (0:8);
+\draw (0:8) node[right] {0s};
+\draw (330.0:2) -- (330.0:8);
+\draw (330.0:8) node[below right] {8.367s};
+\sectionLevel{2}
+\draw (0:2.2) node[below] {0};
+\sectionElt{0.000}{327.547}{2}{$calcOpticalFlowSF$}{gray!40}
+\sectionLevel{3}
+\draw (0:3.2) node[below] {1};
+\sectionElt{0.003}{0.645}{3}{$buildPyramidWithResizeMethod$}{gray!40}
+\sectionElt{0.645}{1.121}{3}{$buildPyramidWithResizeMethod$}{gray!40}
+\sectionElt{1.233}{8.301}{3}{$calcOpticalFlowSingleScaleSF$}{gray!40}
+\sectionElt{8.301}{13.353}{3}{$calcOpticalFlowSingleScaleSF$}{gray!40}
+\sectionElt{13.353}{13.522}{3}{$removeOcclusions$}{gray!40}
+\sectionElt{13.522}{13.684}{3}{$removeOcclusions$}{gray!40}
+\sectionElt{13.694}{270.224}{3}{$layers$}{blue!40}
+\sectionElt{270.224}{325.492}{3}{$crossBilateralFilter$}{gray!40}
+\sectionLevel{4}
+\draw (0:4.2) node[below] {2};
+\sectionElt{0.003}{0.645}{4}{$layers$}{blue!40}
+\sectionElt{0.645}{1.121}{4}{$layers$}{blue!40}
+\sectionElt{1.234}{1.237}{4}{$wd$}{gray!40}
+\sectionElt{1.249}{1.676}{4}{$Mem. transf.$}{orange!50}
+\sectionElt{1.676}{8.248}{4}{$calcOpticalFlowSingleScaleSF_kernel$}{green!75}
+\sectionElt{8.249}{8.293}{4}{$Mem. transf.$}{orange!50}
+\sectionElt{8.302}{8.303}{4}{$wd$}{gray!40}
+\sectionElt{8.314}{8.467}{4}{$Mem. transf.$}{orange!50}
+\sectionElt{8.467}{13.307}{4}{$calcOpticalFlowSingleScaleSF_kernel$}{green!75}
+\sectionElt{13.308}{13.347}{4}{$Mem. transf.$}{orange!50}
+\sectionElt{13.379}{13.493}{4}{$Mem. transf.$}{orange!50}
+\sectionElt{13.493}{13.502}{4}{$removeOcclusions_kernel$}{green!75}
+\sectionElt{13.503}{13.519}{4}{$Mem. transf.$}{orange!50}
+\sectionElt{13.547}{13.657}{4}{$Mem. transf.$}{orange!50}
+\sectionElt{13.657}{13.667}{4}{$removeOcclusions_kernel$}{green!75}
+\sectionElt{13.667}{13.680}{4}{$Mem. transf.$}{orange!50}
+\sectionElt{13.819}{14.155}{4}{$selectPointsToRecalcFlow$}{gray!40}
+\sectionElt{14.155}{14.458}{4}{$selectPointsToRecalcFlow$}{gray!40}
+\sectionElt{14.459}{18.143}{4}{$upscaleOpticalFlow$}{gray!40}
+\sectionElt{18.151}{21.972}{4}{$upscaleOpticalFlow$}{gray!40}
+\sectionElt{22.063}{43.535}{4}{$calcOpticalFlowSingleScaleSF$}{gray!40}
+\sectionElt{43.603}{64.986}{4}{$calcOpticalFlowSingleScaleSF$}{gray!40}
+\sectionElt{64.986}{65.166}{4}{$extrapolateFlow$}{gray!40}
+\sectionElt{65.166}{65.324}{4}{$extrapolateFlow$}{gray!40}
+\sectionElt{65.324}{65.662}{4}{$removeOcclusions$}{gray!40}
+\sectionElt{65.662}{65.975}{4}{$removeOcclusions$}{gray!40}
+\sectionIter{65.975}{3}
+\sectionElt{66.471}{67.657}{4}{$selectPointsToRecalcFlow$}{gray!40}
+\sectionElt{67.657}{68.822}{4}{$selectPointsToRecalcFlow$}{gray!40}
+\sectionElt{68.823}{84.285}{4}{$upscaleOpticalFlow$}{gray!40}
+\sectionElt{84.311}{98.422}{4}{$upscaleOpticalFlow$}{gray!40}
+\sectionElt{98.727}{181.639}{4}{$calcOpticalFlowSingleScaleSF$}{gray!40}
+\sectionElt{181.967}{264.953}{4}{$calcOpticalFlowSingleScaleSF$}{gray!40}
+\sectionElt{264.953}{266.625}{4}{$extrapolateFlow$}{gray!40}
+\sectionElt{266.625}{268.025}{4}{$extrapolateFlow$}{gray!40}
+\sectionElt{268.025}{269.141}{4}{$removeOcclusions$}{gray!40}
+\sectionElt{269.141}{270.224}{4}{$removeOcclusions$}{gray!40}
+\sectionIter{270.224}{3}
+\sectionElt{271.293}{271.295}{4}{$wd$}{gray!40}
+\sectionElt{271.329}{272.456}{4}{$Mem. transf.$}{orange!50}
+\sectionElt{272.456}{325.107}{4}{$crossBilateralFilter_kernel$}{green!75}
+\sectionElt{325.108}{325.481}{4}{$Mem. transf.$}{orange!50}
+\sectionLevel{5}
+\draw (0:5.2) node[below] {3};
+\sectionElt{1.234}{1.234}{5}{$top-bottom_shift,left-right_shift$}{blue!40}
+\sectionElt{8.302}{8.302}{5}{$top-bottom_shift,left-right_shift$}{blue!40}
+\sectionElt{13.819}{13.981}{5}{$calcIrregularityMat$}{gray!40}
+\sectionElt{14.010}{14.155}{5}{$rows,cols$}{blue!40}
+\sectionElt{14.155}{14.288}{5}{$calcIrregularityMat$}{gray!40}
+\sectionElt{14.313}{14.458}{5}{$rows,cols$}{blue!40}
+\sectionElt{14.459}{18.025}{5}{$crossBilateralFilter$}{gray!40}
+\sectionElt{18.152}{21.833}{5}{$crossBilateralFilter$}{gray!40}
+\sectionElt{22.064}{22.064}{5}{$wd$}{gray!40}
+\sectionElt{22.084}{22.381}{5}{$Mem. transf.$}{orange!50}
+\sectionElt{22.382}{43.454}{5}{$calcOpticalFlowSingleScaleSF\_kernel$}{green!75}
+\sectionElt{43.454}{43.529}{5}{$Mem. transf.$}{orange!50}
+\sectionElt{43.603}{43.603}{5}{$wd$}{gray!40}
+\sectionElt{43.617}{43.903}{5}{$Mem. transf.$}{orange!50}
+\sectionElt{43.904}{64.892}{5}{$calcOpticalFlowSingleScaleSF\_kernel$}{green!75}
+\sectionElt{64.893}{64.979}{5}{$Mem. transf.$}{orange!50}
+\sectionElt{64.990}{65.166}{5}{$rows,cols,bottom-top,right-left$}{blue!40}
+\sectionElt{65.169}{65.324}{5}{$rows,cols,bottom-top,right-left$}{blue!40}
+\sectionElt{65.335}{65.591}{5}{$Mem. transf.$}{orange!50}
+\sectionElt{65.592}{65.615}{5}{$removeOcclusions_kernel$}{green!75}
+\sectionElt{65.615}{65.658}{5}{$Mem. transf.$}{orange!50}
+\sectionElt{65.671}{65.911}{5}{$Mem. transf.$}{orange!50}
+\sectionElt{65.911}{65.937}{5}{$removeOcclusions_kernel$}{green!75}
+\sectionElt{65.937}{65.972}{5}{$Mem. transf.$}{orange!50}
+\sectionElt{66.471}{66.957}{5}{$calcIrregularityMat$}{gray!40}
+\sectionElt{67.066}{67.657}{5}{$rows,cols$}{blue!40}
+\sectionElt{67.657}{68.059}{5}{$calcIrregularityMat$}{gray!40}
+\sectionElt{68.218}{68.822}{5}{$rows,cols$}{blue!40}
+\sectionElt{68.823}{83.725}{5}{$crossBilateralFilter$}{gray!40}
+\sectionElt{84.311}{97.936}{5}{$crossBilateralFilter$}{gray!40}
+\sectionElt{98.727}{98.727}{5}{$wd$}{gray!40}
+\sectionElt{98.752}{99.477}{5}{$Mem. transf.$}{orange!50}
+\sectionElt{99.477}{181.317}{5}{$calcOpticalFlowSingleScaleSF\_kernel$}{green!75}
+\sectionElt{181.318}{181.632}{5}{$Mem. transf.$}{orange!50}
+\sectionElt{181.967}{181.968}{5}{$wd$}{gray!40}
+\sectionElt{181.990}{182.797}{5}{$Mem. transf.$}{orange!50}
+\sectionElt{182.797}{264.574}{5}{$calcOpticalFlowSingleScaleSF\_kernel$}{green!75}
+\sectionElt{264.575}{264.945}{5}{$Mem. transf.$}{orange!50}
+\sectionElt{264.967}{266.625}{5}{$rows,cols,bottom-top,right-left$}{blue!40}
+\sectionElt{266.633}{268.024}{5}{$rows,cols,bottom-top,right-left$}{blue!40}
+\sectionElt{268.046}{268.874}{5}{$Mem. transf.$}{orange!50}
+\sectionElt{268.874}{268.992}{5}{$removeOcclusions_kernel$}{green!75}
+\sectionElt{268.993}{269.137}{5}{$Mem. transf.$}{orange!50}
+\sectionElt{269.162}{269.989}{5}{$Mem. transf.$}{orange!50}
+\sectionElt{269.989}{270.075}{5}{$removeOcclusions_kernel$}{green!75}
+\sectionElt{270.075}{270.219}{5}{$Mem. transf.$}{orange!50}
+\sectionElt{271.293}{271.293}{5}{$top-bottom_shift,left-right_shift$}{blue!40}
+\sectionLevel{6}
+\draw (0:6.2) node[below] {4};
+\sectionElt{13.828}{13.924}{6}{$Mem. transf.$}{orange!50}
+\sectionElt{13.924}{13.967}{6}{$calcIrregularityMat_kernel$}{green!75}
+\sectionElt{13.968}{13.980}{6}{$Mem. transf.$}{orange!50}
+\sectionElt{14.178}{14.225}{6}{$Mem. transf.$}{orange!50}
+\sectionElt{14.225}{14.275}{6}{$calcIrregularityMat_kernel$}{green!75}
+\sectionElt{14.275}{14.288}{6}{$Mem. transf.$}{orange!50}
+\sectionElt{14.539}{14.540}{6}{$wd$}{gray!40}
+\sectionElt{14.553}{14.681}{6}{$Mem. transf.$}{orange!50}
+\sectionElt{14.682}{17.996}{6}{$crossBilateralFilter_kernel$}{green!75}
+\sectionElt{17.997}{18.019}{6}{$Mem. transf.$}{orange!50}
+\sectionElt{18.225}{18.226}{6}{$wd$}{gray!40}
+\sectionElt{18.242}{18.444}{6}{$Mem. transf.$}{orange!50}
+\sectionElt{18.445}{21.801}{6}{$crossBilateralFilter_kernel$}{green!75}
+\sectionElt{21.802}{21.825}{6}{$Mem. transf.$}{orange!50}
+\sectionElt{22.064}{22.064}{6}{$top-bottom_shift,left-right_shift$}{blue!40}
+\sectionElt{43.603}{43.603}{6}{$top-bottom_shift,left-right_shift$}{blue!40}
+\sectionElt{66.540}{66.738}{6}{$Mem. transf.$}{orange!50}
+\sectionElt{66.738}{66.919}{6}{$calcIrregularityMat_kernel$}{green!75}
+\sectionElt{66.920}{66.957}{6}{$Mem. transf.$}{orange!50}
+\sectionElt{67.675}{67.802}{6}{$Mem. transf.$}{orange!50}
+\sectionElt{67.802}{68.022}{6}{$calcIrregularityMat_kernel$}{green!75}
+\sectionElt{68.022}{68.059}{6}{$Mem. transf.$}{orange!50}
+\sectionElt{69.106}{69.108}{6}{$wd$}{gray!40}
+\sectionElt{69.126}{69.390}{6}{$Mem. transf.$}{orange!50}
+\sectionElt{69.391}{83.637}{6}{$crossBilateralFilter_kernel$}{green!75}
+\sectionElt{83.638}{83.717}{6}{$Mem. transf.$}{orange!50}
+\sectionElt{84.616}{84.617}{6}{$wd$}{gray!40}
+\sectionElt{84.637}{85.014}{6}{$Mem. transf.$}{orange!50}
+\sectionElt{85.014}{97.840}{6}{$crossBilateralFilter_kernel$}{green!75}
+\sectionElt{97.841}{97.928}{6}{$Mem. transf.$}{orange!50}
+\sectionElt{98.727}{98.727}{6}{$top-bottom_shift,left-right_shift$}{blue!40}
+\sectionElt{181.967}{181.967}{6}{$top-bottom_shift,left-right_shift$}{blue!40}
+\sectionLevel{7}
+\draw (0:7.2) node[below] {5};
+\sectionElt{14.539}{14.539}{7}{$top-bottom_shift,left-right_shift$}{blue!40}
+\sectionElt{18.225}{18.225}{7}{$top-bottom_shift,left-right_shift$}{blue!40}
+\sectionElt{69.106}{69.106}{7}{$top-bottom_shift,left-right_shift$}{blue!40}
+\sectionElt{84.616}{84.616}{7}{$top-bottom_shift,left-right_shift$}{blue!40}
+
+
+
+\end{tikzpicture}
+\end{document}
